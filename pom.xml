@@ -1,0 +1,136 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>exercise.stockmarket</groupId>
+    <artifactId>SuperSimpleStockMarket</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>Super Simple Stock</name>
+    <description>This is an implementation of the Super Simple Stock test for JP Morgan positions</description>
+
+    <properties>
+        <commons.lang.version>2.6</commons.lang.version>
+        <commons.logging.version>1.1.1</commons.logging.version>
+        <commons.collections.version>3.2.1</commons.collections.version>
+        <commons.math3.version>3.0</commons.math3.version>
+        <log4j.version>1.2.17</log4j.version>
+        <junit.version>4.8.1</junit.version>
+        <lombok.version>1.18.10</lombok.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>${commons.lang.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>${commons.logging.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>${commons.collections.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+            <version>${commons.math3.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.9.5</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.1</version>
+                    <configuration>
+                        <source>1.6</source>
+                        <target>1.6</target>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.projectlombok</groupId>
+                    <artifactId>lombok-maven-plugin</artifactId>
+                    <version>${delombok-maven-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>delombok</id>
+                            <phase>generate-sources</phase>
+                            <goals>
+                                <goal>delombok</goal>
+                            </goals>
+                            <configuration>
+                                <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
+                                <outputDirectory>${project.build.directory}/delombok</outputDirectory>
+                                <addOutputDirectory>false</addOutputDirectory>
+                                <formatPreferences>
+                                    <javaLangAsFQN>skip</javaLangAsFQN>
+                                </formatPreferences>
+                                <verbose>false</verbose>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>test-delombok</id>
+                            <phase>generate-test-sources</phase>
+                            <goals>
+                                <goal>testDelombok</goal>
+                            </goals>
+                            <configuration>
+                                <verbose>false</verbose>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+
+
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
