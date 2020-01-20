@@ -200,10 +200,10 @@ public class Application {
 
     private void printMenu() {
         logger.info("0: Quit");
-        logger.info("1: Calculate dividend yield for stock");
-        logger.info("2: Calculate P/E ratio for stock");
-        logger.info("3: Record a trade for stock");
-        logger.info("4: Show all trade for stock");
+        logger.info("1: Calculate Dividend Yield for a Stock");
+        logger.info("2: Calculate P/E Ratio for a Stock");
+        logger.info("3: Record a trade for a stock");
+        logger.info("4: Show all trades for a stock");
         logger.info("5: Calculate Volume Weighted Stock Price for stock");
         logger.info("6: Calculate GBCE All Share Index");
 
