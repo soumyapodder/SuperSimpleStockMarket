@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.Duration;
 import java.time.Instant;
-import java.util.Set;
+import java.util.Collection;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static com.jpmorgan.exercise.stockmarket.helper.NumberUtils.divide;
@@ -46,7 +46,7 @@ public class StockServiceImpl implements StockService {
                     " , Interval in Minutes = " + intervalInMinutes);
         }
 
-        final Set<Trade> trades = tradeService.getAllRecordedTrades();
+        final Collection<Trade> trades = tradeService.getAllRecordedTrades();
         if (CollectionUtils.isEmpty(trades)) {
             throw new InvalidDataException("No trades exist for Volume Weighted Stock Price calculation.");
         }
@@ -72,7 +72,7 @@ public class StockServiceImpl implements StockService {
 
     @Override
     public BigDecimal calculateGBCEAllShareIndex() throws InvalidDataException {
-        final Set<Trade> trades = tradeService.getAllRecordedTrades();
+        final Collection<Trade> trades = tradeService.getAllRecordedTrades();
         if (CollectionUtils.isEmpty(trades)) {
             throw new InvalidDataException("No trades exist for GBCE calculation.");
         }

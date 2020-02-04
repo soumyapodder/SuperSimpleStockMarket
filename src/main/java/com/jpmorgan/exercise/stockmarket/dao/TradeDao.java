@@ -2,10 +2,10 @@ package com.jpmorgan.exercise.stockmarket.dao;
 
 import com.jpmorgan.exercise.stockmarket.model.Trade;
 
-import java.util.Set;
+import java.util.Collection;
 
 public interface TradeDao {
     void addTrade(Trade trade);
-    Set<Trade> getAllTrades();
+    Collection<Trade> getAllTrades();
     void clearAllTrades();
 }

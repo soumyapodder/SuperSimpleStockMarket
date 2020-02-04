@@ -6,10 +6,10 @@ import com.jpmorgan.exercise.stockmarket.model.Trade;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.util.Set;
+import java.util.Collection;
 
 public interface TradeService {
     Trade recordTrade(Stock stock, BuySellIndicator buySellIndicator, BigInteger quantity, BigDecimal price);
 
-    Set<Trade> getAllRecordedTrades();
+    Collection<Trade> getAllRecordedTrades();
 }

@@ -9,7 +9,7 @@ import com.jpmorgan.exercise.stockmarket.service.TradeService;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.Instant;
-import java.util.Set;
+import java.util.Collection;
 import java.util.UUID;
 
 public class TradeServiceImpl implements TradeService {
@@ -29,7 +29,7 @@ public class TradeServiceImpl implements TradeService {
     }
 
     @Override
-    public Set<Trade> getAllRecordedTrades() {
+    public Collection<Trade> getAllRecordedTrades() {
         return tradeDao.getAllTrades();
     }
 }

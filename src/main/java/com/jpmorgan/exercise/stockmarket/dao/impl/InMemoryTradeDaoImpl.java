@@ -3,9 +3,8 @@ package com.jpmorgan.exercise.stockmarket.dao.impl;
 import com.jpmorgan.exercise.stockmarket.dao.TradeDao;
 import com.jpmorgan.exercise.stockmarket.model.Trade;
 
-import java.util.LinkedHashSet;
+import java.util.Collection;
 import java.util.Map;
-import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -19,8 +18,8 @@ public class InMemoryTradeDaoImpl implements TradeDao {
     }
 
     @Override
-    public Set<Trade> getAllTrades() {
-        return new LinkedHashSet<>(tradeCollector.values());
+    public Collection<Trade> getAllTrades() {
+        return tradeCollector.values();
     }
 
     @Override
