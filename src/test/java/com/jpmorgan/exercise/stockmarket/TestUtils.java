@@ -48,6 +48,8 @@ public class TestUtils {
         return trades;
     }
 
-
-
+    public static Trade.TradeBuilder aDefaultTrade(CommonStock commonStock, BuySellIndicator buySellIndicator) {
+        return Trade.builder().stock(commonStock).quantity(TEST_QUANTITY).price(TEST_PRICE).timestamp(Instant.now())
+                .buySellIndicator(buySellIndicator).tradeId(UUID.randomUUID());
+    }
 }

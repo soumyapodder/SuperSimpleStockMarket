@@ -4,20 +4,23 @@ import com.jpmorgan.exercise.stockmarket.dao.TradeDao;
 import com.jpmorgan.exercise.stockmarket.model.Trade;
 
 import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class InMemoryTradeDaoImpl implements TradeDao {
 
-    private static final Set<Trade> tradeCollector = new LinkedHashSet<>();
+    private static final Map<UUID, Trade> tradeCollector = new ConcurrentHashMap<>();
 
     @Override
     public void addTrade(Trade trade) {
-        tradeCollector.add(trade);
+        tradeCollector.put(trade.getTradeId(), trade);
     }
 
     @Override
     public Set<Trade> getAllTrades() {
-        return tradeCollector;
+        return new LinkedHashSet<>(tradeCollector.values());
     }
 
     @Override

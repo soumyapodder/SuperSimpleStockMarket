@@ -17,11 +17,9 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.LinkedHashSet;
 import java.util.Set;
-import java.util.UUID;
 
 import static com.jpmorgan.exercise.stockmarket.TestConstants.*;
-import static com.jpmorgan.exercise.stockmarket.TestUtils.aDefaultCommonStockBuilder;
-import static com.jpmorgan.exercise.stockmarket.TestUtils.createTradeDataSet;
+import static com.jpmorgan.exercise.stockmarket.TestUtils.*;
 import static com.jpmorgan.exercise.stockmarket.helper.NumberUtils.formatter;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
@@ -141,9 +139,7 @@ public class StockServiceImplTest {
         Set<Trade> trades = new LinkedHashSet<>();
 
         CommonStock commonStock = aDefaultCommonStockBuilder().build();
-        Instant createTimestamp = Instant.now();
-        Trade trade = Trade.builder().buySellIndicator(BuySellIndicator.SELL).price(TEST_PRICE).quantity(TEST_QUANTITY).stock(commonStock)
-                .timestamp(createTimestamp).tradeId(UUID.randomUUID()).build();
+        Trade trade = aDefaultTrade(commonStock, BuySellIndicator.SELL).build();
         trades.add(trade);
 
         when(tradeService.getAllRecordedTrades()).thenReturn(trades);
@@ -169,12 +165,11 @@ public class StockServiceImplTest {
         CommonStock commonStock = aDefaultCommonStockBuilder().build();
         Instant createTimestamp = Instant.now();
 
-        Trade trade = Trade.builder().buySellIndicator(BuySellIndicator.SELL).price(TEST_PRICE).tradeId(UUID.randomUUID())
-                .quantity(TEST_QUANTITY).stock(commonStock).timestamp(createTimestamp.minus(Duration.ofMinutes(20))).build();
+        Trade trade = aDefaultTrade(commonStock, BuySellIndicator.SELL).timestamp(createTimestamp.minus(Duration.ofMinutes(20))).build();
         trades.add(trade);
 
-        Trade trade2 = Trade.builder().buySellIndicator(BuySellIndicator.SELL).price(new BigDecimal("30.5"))
-                .quantity(new BigInteger("15")).stock(commonStock).timestamp(createTimestamp).tradeId(UUID.randomUUID()).build();
+        Trade trade2 = aDefaultTrade(commonStock, BuySellIndicator.SELL).price(new BigDecimal("30.5"))
+                .quantity(new BigInteger("15")).build();
         trades.add(trade2);
 
         when(tradeService.getAllRecordedTrades()).thenReturn(trades);
