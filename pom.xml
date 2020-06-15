@@ -11,7 +11,7 @@
     <properties>
         <commons.lang.version>2.6</commons.lang.version>
         <commons.logging.version>1.1.1</commons.logging.version>
-        <commons.collections.version>3.2.1</commons.collections.version>
+        <commons.collections.version>3.2.2</commons.collections.version>
         <commons.math3.version>3.0</commons.math3.version>
         <log4j.version>1.2.17</log4j.version>
         <junit.version>4.8.1</junit.version>
